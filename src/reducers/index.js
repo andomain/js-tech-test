@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 
+// Dumb placeholder reducer
 const baseReducer = (state = {}, action) => {
     switch (action.type) {
         case 'TEST_ACTION': {
