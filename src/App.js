@@ -1,11 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const App = () => (
+const App = ({ eventData }) => (
     <div className="App">
         <header className="App__Header">
-            TODO: Start building
+            <ul>
+                {eventData.events.map(event => (
+                    <li key={event.eventId}>{event.name}</li>
+                ))}
+            </ul>
         </header>
     </div>
 );
 
-export default App;
+const mapStateToProps = state => ({ ...state });
+
+export default connect(mapStateToProps)(App);
+
