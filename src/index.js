@@ -4,21 +4,15 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 
+import App from './App';
+import SocketListener from './SocketListener';
 import rootReducer from './reducers';
 
-import App from './App';
-
-import { SOCKET_URL, TYPE } from './constants';
+import { SOCKET_URL } from './constants';
 
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
-// Debug WS connection
-const socket = new WebSocket(SOCKET_URL);
-
-socket.onopen = () => {
-    socket.addEventListener("message", m => console.log(JSON.parse(m.data)));
-    socket.send(JSON.stringify({ type: TYPE.GET_LIVE_EVENTS, primaryMarkets: false }));
-};
+new SocketListener(SOCKET_URL, store.dispatch);
 
 ReactDOM.render(
     <Provider store={store}>
