@@ -3,15 +3,15 @@ import { connect } from 'react-redux';
 
 import EventList from './components/EventList';
 
-const App = ({ eventData }) => (
+const App = ({ events }) => (
     <div className="App">
         <header className="App__Header">
-            <EventList events={eventData.events} />
+            <EventList events={events} />
         </header>
     </div>
 );
 
-const mapStateToProps = state => ({ ...state });
+const mapStateToProps = state => ({ events: state.events.eventList });
 
 export default connect(mapStateToProps)(App);
 

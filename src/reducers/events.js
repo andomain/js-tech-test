@@ -1,14 +1,14 @@
 import { LOAD_EVENTS } from '../actions/events';
 
 const initialState = {
-    events: [],
+    eventList: [],
 };
 
 export default (state = initialState, action) => {
     switch (action.type) {
         case LOAD_EVENTS: {
             return {
-                events: action.payload,
+                eventList: action.payload,
             }
         }
         default: return state;
