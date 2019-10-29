@@ -7,12 +7,19 @@ export default class SocketListener {
 
         const socket = new WebSocket(url, wsPrototcol);
 
-        socket.addEventListener('open', () => {
+        socket.addEventListener(EVENT.OPEN, () => {
             socket.addEventListener(EVENT.MESSAGE, e => this.messageHandler(JSON.parse(e.data)));
-            socket.send(JSON.stringify({ type: REQUEST.GET_LIVE_EVENTS, primaryMarkets: false }));
+            this.getEvents(true);
         });
 
         this.socket = socket;
+    }
+
+    getEvents = (primaryMarkets = false) => {
+        this._sendEvent({
+            type: REQUEST.GET_LIVE_EVENTS,
+            primaryMarkets
+        })
     }
 
     messageHandler({ type, data }) {
@@ -24,4 +31,6 @@ export default class SocketListener {
             default: return;
         }
     }
+
+    _sendEvent = payload => this.socket.send(JSON.stringify(payload));
 }

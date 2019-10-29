@@ -6,6 +6,7 @@ export const REQUEST = {
 };
 
 export const EVENT = {
+    OPEN: 'open',
     MESSAGE: 'message',
     INIT: 'INIT',
     LIVE_EVENTS: 'LIVE_EVENTS_DATA',
