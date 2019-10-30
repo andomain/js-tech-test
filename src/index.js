@@ -10,6 +10,8 @@ import rootReducer from './reducers';
 
 import { SOCKET_URL } from './constants';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
 new SocketListener(SOCKET_URL, store.dispatch);
