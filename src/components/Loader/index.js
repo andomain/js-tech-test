@@ -1,8 +1,7 @@
 import React from 'react';
-import { GridLoader } from 'react-spinners';
+import Spinner from 'react-bootstrap/Spinner';
 
 const Loader = () => (
-    <GridLoader />
-);
+    <Spinner animation="grow" />);
 
 export default Loader;
