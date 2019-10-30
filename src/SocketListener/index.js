@@ -1,4 +1,5 @@
 import { loadEvents } from '../actions/events';
+import { loadMarket } from '../actions/markets';
 import { setLoaded } from '../actions/status';
 import { REQUEST, EVENT } from '../constants';
 
@@ -9,7 +10,10 @@ export default class SocketListener {
         const socket = new WebSocket(url, wsPrototcol);
 
         socket.addEventListener(EVENT.OPEN, () => {
+            // Register message handler
             socket.addEventListener(EVENT.MESSAGE, e => this.messageHandler(JSON.parse(e.data)));
+
+            // Fetch live events with primary Markets
             this.getEvents(true);
         });
 
@@ -23,11 +27,22 @@ export default class SocketListener {
         })
     }
 
+    getMarket = id => {
+        this._sendEvent({
+            type: REQUEST.GET_MARKET,
+            id,
+        });
+    }
+
     messageHandler({ type, data }) {
         switch (type) {
             case EVENT.LIVE_EVENTS: {
-                this.dispatch(loadEvents(data));
+                this.loadEventsHandler(data);
                 this.dispatch(setLoaded(true));
+                break;
+            }
+            case EVENT.MARKET_DATA: {
+                this.loadMarketHandler(data);
                 break;
             }
             default: return;
