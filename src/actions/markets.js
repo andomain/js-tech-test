@@ -1,6 +1,6 @@
 export const LOAD_MARKET = 'events/load_market';
 
-export const loadMarket = marketData => ({
+export const loadMarket = payload => ({
     type: LOAD_MARKET,
-    payload: marketData,
+    payload,
 });

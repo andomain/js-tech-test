@@ -4,6 +4,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
+import OutcomeList from './OutcomeList';
 import Loader from '../Loader';
 
 const Market = ({ id, markets }) => {
@@ -37,7 +38,9 @@ const Market = ({ id, markets }) => {
                 </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse eventKey={market.marketId}>
-                <Card.Body>Hello! I'm the body</Card.Body>
+                <Card.Body>
+                    <OutcomeList outcomeIds={market.outcomes} />
+                </Card.Body>
             </Accordion.Collapse>
         </Card>
     );
