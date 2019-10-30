@@ -1,0 +1,12 @@
+.EventSummary {
+    a:hover {
+        text-decoration: none;
+    }
+}
+
+.SummaryItem {
+    .list-group-item {
+        display: flex;
+        justify-content: space-between;
+    }
+}
