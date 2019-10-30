@@ -1,6 +1,6 @@
 import { LOAD_EVENTS } from '../actions/events';
 
-const initialState = {};
+export const initialState = {};
 
 export default (state = initialState, action) => {
     switch (action.type) {
