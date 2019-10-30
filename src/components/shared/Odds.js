@@ -1,9 +1,9 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 
-const Odds = ({ price, suspended = false, decimal = false }) => {
-    const priceText = decimal ? price.dec : `${price.num} / ${price.den}`
+const Odds = ({ price, suspended = false, decimal }) => {
+    const priceText = decimal ? Number(price.decimal).toFixed(2) : `${price.num} / ${price.den}`
 
     return (
         <Button disabled={suspended}>
@@ -13,4 +13,8 @@ const Odds = ({ price, suspended = false, decimal = false }) => {
     );
 }
 
-export default Odds;
+const mapStateToProps = state => ({
+    decimal: state.status.decimalOdds,
+})
+
+export default connect(mapStateToProps)(Odds);
