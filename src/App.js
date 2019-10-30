@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 import EventList from './components/EventList';
 import Event from './components/Event';
 
-const App = () => (
+export const App = () => (
     <Router>
         <Card>
             <Card.Img variant="top" src="/assets/footballHeader.jpg" />
