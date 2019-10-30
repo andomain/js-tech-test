@@ -1,4 +1,5 @@
 import { loadEvents } from '../actions/events';
+import { setLoaded } from '../actions/status';
 import { REQUEST, EVENT } from '../constants';
 
 export default class SocketListener {
@@ -26,6 +27,7 @@ export default class SocketListener {
         switch (type) {
             case EVENT.LIVE_EVENTS: {
                 this.dispatch(loadEvents(data));
+                this.dispatch(setLoaded(true));
                 break;
             }
             default: return;

@@ -1,14 +1,14 @@
-import { TOGGLE_PRIMARY } from '../actions/status';
+import { SET_LOADED } from '../actions/status';
 
 const initialState = {
-    showPrimary: false,
+    loaded: false,
 }
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case TOGGLE_PRIMARY:
+        case SET_LOADED:
             return {
-                showPrimary: !state.showPrimary,
+                loaded: action.payload.loaded,
             }
         default:
             return state

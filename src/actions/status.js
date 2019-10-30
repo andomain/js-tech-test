@@ -1,6 +1,8 @@
-export const TOGGLE_PRIMARY = 'status/toggle_primary_markets';
+export const SET_LOADED = 'status/set-loaded';
 
-export const togglePrimaryMarkets = {
-    type: TOGGLE_PRIMARY,
-    payload: {},
-}
+export const setLoaded = loaded => ({
+    type: SET_LOADED,
+    payload: {
+        loaded,
+    }
+})
