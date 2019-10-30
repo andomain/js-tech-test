@@ -3,6 +3,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import { Link } from 'react-router-dom';
 
 import EventTitle from '../shared/EventTitle';
+import { EventType } from '../../dataTypes';
 
 const SummaryItem = ({ item }) => {
     const { scores } = item;
@@ -15,6 +16,10 @@ const SummaryItem = ({ item }) => {
             </ListGroup.Item>
         </Link>
     );
+};
+
+SummaryItem.propTypes = {
+    item: EventType.isRequired,
 };
 
 export default SummaryItem;

@@ -3,7 +3,7 @@ import { SET_LOADED, TOGGLE_ODDS } from '../actions/status';
 const initialState = {
     loaded: false,
     decimalOdds: true,
-}
+};
 
 export default (state = initialState, action) => {
     switch (action.type) {
@@ -11,15 +11,15 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 loaded: action.payload.loaded,
-            }
+            };
         }
         case TOGGLE_ODDS: {
             return {
                 ...state,
                 decimalOdds: !state.decimalOdds,
-            }
+            };
         }
         default:
-            return state
+            return state;
     }
-}
+};

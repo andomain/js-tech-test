@@ -14,4 +14,4 @@ export const EVENT = {
     LIVE_EVENTS: 'LIVE_EVENTS_DATA',
     MARKET_DATA: 'MARKET_DATA',
     OUTCOME_DATA: 'OUTCOME_DATA',
-}
+};

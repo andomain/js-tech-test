@@ -1,8 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Card from 'react-bootstrap/Card'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Card from 'react-bootstrap/Card';
 
-import EventSummary from './components/EventSummary';
+import EventList from './components/EventList';
 import Event from './components/Event';
 
 const App = () => (
@@ -12,7 +12,7 @@ const App = () => (
             <Card.Body>
                 <Switch>
                     <Route path="/event/:id" component={Event} />
-                    <Route path="/" component={EventSummary} />
+                    <Route path="/" component={EventList} />
                 </Switch>
             </Card.Body>
         </Card>
@@ -20,4 +20,3 @@ const App = () => (
 );
 
 export default App;
-

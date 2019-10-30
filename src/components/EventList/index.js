@@ -9,13 +9,13 @@ import { EventType } from '../../dataTypes';
 
 import './style.scss';
 
-const EventSummary = ({ events, loaded }) => (
-    <div className="EventSummary">
+const EventList = ({ events, loaded }) => (
+    <div className="EventList">
         <h1>Live Football</h1>
         {!loaded && <Loader />}
         {loaded && (
             <ListGroup>
-                {events.map(event => (
+                {events.map((event) => (
                     <SummaryItem key={event.eventId} item={event} />
                 ))}
             </ListGroup>
@@ -23,14 +23,18 @@ const EventSummary = ({ events, loaded }) => (
     </div>
 );
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     loaded: state.status.loaded,
-    events: Object.values(state.events)
+    events: Object.values(state.events),
 });
 
-export default connect(mapStateToProps)(EventSummary);
+export default connect(mapStateToProps)(EventList);
 
-EventSummary.propTypes = {
+EventList.propTypes = {
     events: PropTypes.arrayOf(EventType),
     loaded: PropTypes.bool.isRequired,
-}
+};
+
+EventList.defaultProps = {
+    events: [],
+};

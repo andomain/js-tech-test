@@ -3,9 +3,12 @@ import { connect } from 'react-redux';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import PropTypes from 'prop-types';
 
 import OutcomeList from './OutcomeList';
 import Loader from '../Loader';
+
+import { MarketType } from '../../dataTypes';
 
 const Market = ({ id, markets }) => {
     const market = markets[id];
@@ -28,7 +31,8 @@ const Market = ({ id, markets }) => {
         return (
             <Card>
                 <Card.Header>
-                    {market.name} (Disabled)
+                    {market.name}
+                    (Disabled)
                 </Card.Header>
             </Card>
         );
@@ -48,10 +52,15 @@ const Market = ({ id, markets }) => {
             </Accordion.Collapse>
         </Card>
     );
-}
+};
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     markets: state.markets,
-})
+});
+
+Market.propTypes = {
+    id: PropTypes.number.isRequired,
+    markets: PropTypes.objectOf(MarketType).isRequired,
+};
 
 export default connect(mapStateToProps)(Market);

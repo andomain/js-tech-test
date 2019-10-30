@@ -1,9 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ListGroup from 'react-bootstrap/ListGroup';
+import PropTypes from 'prop-types';
 
 import Odds from '../shared/Odds';
 import Loader from '../Loader';
+
+import { OutcomeType } from '../../dataTypes';
 
 const Outcome = ({ id, outcomes }) => {
     const outcome = outcomes[id];
@@ -23,9 +26,11 @@ const Outcome = ({ id, outcomes }) => {
     if (!outcome.status.displayable) {
         return (
             <ListGroup.Item>
-                {outcome.name} (Disabled)
+                {outcome.name}
+                {' '}
+                (Disabled)
             </ListGroup.Item>
-        )
+        );
     }
 
     return (
@@ -34,11 +39,16 @@ const Outcome = ({ id, outcomes }) => {
             <Odds price={outcome.price} suspended={outcome.status.suspended} />
         </ListGroup.Item>
     );
-}
+};
 
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     outcomes: state.outcomes,
 });
+
+Outcome.propTypes = {
+    id: PropTypes.number.isRequired,
+    outcomes: PropTypes.objectOf(OutcomeType).isRequired,
+};
 
 export default connect(mapStateToProps)(Outcome);

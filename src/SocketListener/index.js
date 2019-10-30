@@ -12,7 +12,7 @@ export default class SocketListener {
 
         socket.addEventListener(EVENT.OPEN, () => {
             // Register message handler
-            socket.addEventListener(EVENT.MESSAGE, e => this.messageHandler(JSON.parse(e.data)));
+            socket.addEventListener(EVENT.MESSAGE, (e) => this.messageHandler(JSON.parse(e.data)));
 
             // Fetch live events with primary Markets
             this.getEvents(true);
@@ -21,29 +21,28 @@ export default class SocketListener {
         this.socket = socket;
     }
 
-    getEvents = (primaryMarkets = false) => {
-        this._sendEvent({
+    getEvents(primaryMarkets = false) {
+        this.sendEvent({
             type: REQUEST.GET_LIVE_EVENTS,
-            primaryMarkets
-        })
+            primaryMarkets,
+        });
     }
 
-    getMarket = id => {
-        this._sendEvent({
+    getMarket(id) {
+        this.sendEvent({
             type: REQUEST.GET_MARKET,
             id,
         });
     }
 
-    getOutcome = id => {
-        this._sendEvent({
+    getOutcome(id) {
+        this.sendEvent({
             type: REQUEST.GET_OUTCOME,
             id,
-        })
+        });
     }
 
     messageHandler({ type, data }) {
-        console.log({ type, data });
         switch (type) {
             case EVENT.LIVE_EVENTS: {
                 this.loadEventsHandler(data);
@@ -58,33 +57,35 @@ export default class SocketListener {
                 this.loadOutcomeHandler(data);
                 break;
             }
-            default: return;
+            default:
         }
     }
 
-    loadEventsHandler = eventData => {
+    loadEventsHandler(eventData) {
         // Populate state with event data
         this.dispatch(loadEvents(eventData));
 
         // Loop through any markets required by these events
-        eventData.forEach(event => {
+        eventData.forEach((event) => {
             if (event.markets) {
-                event.markets.forEach(marketId => this.getMarket(marketId));
+                event.markets.forEach((marketId) => this.getMarket(marketId));
             }
-        })
+        });
     }
 
-    loadMarketHandler = marketData => {
+    loadMarketHandler(marketData) {
         // Dispatch action to populate state
-        this.dispatch(loadMarket(marketData))
+        this.dispatch(loadMarket(marketData));
 
         // Fetch any outcomes
-        marketData.outcomes.forEach(outcome => this.getOutcome(outcome));
+        marketData.outcomes.forEach((outcome) => this.getOutcome(outcome));
     }
 
-    loadOutcomeHandler = outcomeData => {
+    loadOutcomeHandler(outcomeData) {
         this.dispatch(loadOutcome(outcomeData));
     }
 
-    _sendEvent = payload => this.socket.send(JSON.stringify(payload));
+    sendEvent(payload) {
+        this.socket.send(JSON.stringify(payload));
+    }
 }

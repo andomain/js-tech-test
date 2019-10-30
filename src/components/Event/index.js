@@ -2,30 +2,29 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import PropTypes from 'prop-types';
 
 import MarketList from './MarketList';
 import EventTitle from '../shared/EventTitle';
 import Loader from '../Loader';
 
 import { toggleOdds } from '../../actions/status';
+import { EventType } from '../../dataTypes';
 
 import './style.scss';
 
 const Event = ({
     events,
     loaded,
-    match: {
-        params: {
-            id
-        },
-    },
+    match,
     decimalOdds,
     toggleOddsHandler,
 }) => {
     if (!loaded) {
-        return (<Loader />)
+        return (<Loader />);
     }
 
+    const { params: { id } } = match;
     const eventData = events[id];
     const oddsText = `Show ${decimalOdds ? 'fractional' : 'decimal'} odds`;
 
@@ -42,16 +41,28 @@ const Event = ({
             <MarketList marketIds={eventData.markets} />
         </article>
     );
-}
+};
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     loaded: state.status.loaded,
     events: state.events,
     decimalOdds: state.status.decimalOdds,
 });
 
-const mapDispatchToProps = dispatch => ({
-    toggleOddsHandler: () => dispatch(toggleOdds())
+const mapDispatchToProps = (dispatch) => ({
+    toggleOddsHandler: () => dispatch(toggleOdds()),
 });
+
+Event.propTypes = {
+    events: PropTypes.objectOf(EventType).isRequired,
+    loaded: PropTypes.bool.isRequired,
+    match: PropTypes.shape({
+        params: PropTypes.shape({
+            id: PropTypes.string,
+        }),
+    }).isRequired,
+    decimalOdds: PropTypes.bool.isRequired,
+    toggleOddsHandler: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Event);
