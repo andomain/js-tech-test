@@ -10,6 +10,7 @@ import Loader from '../Loader';
 const Market = ({ id, markets }) => {
     const market = markets[id];
 
+    // If market has not yet loaded from the socket
     if (market === undefined) {
         return (
             <Card>
@@ -20,6 +21,9 @@ const Market = ({ id, markets }) => {
         );
     }
 
+    // If market is not displayable
+    // TODO: Non-displayable markets should not be rendered
+    // TODO: If all markets for an event are not displayable, the event should not display
     if (!market.status.displayable) {
         return (
             <Card>

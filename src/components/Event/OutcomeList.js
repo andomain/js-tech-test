@@ -1,22 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import ListGroup from 'react-bootstrap/ListGroup';
 
-const OutcomeList = ({ outcomes, outcomeIds }) => (
+import Outcome from './Outcome';
+
+const OutcomeList = ({ outcomeIds }) => (
     <ListGroup>
         {
-            outcomeIds.map(id => (
-                <ListGroup.Item>
-                    {outcomes[id] && outcomes[id].name}
-                </ListGroup.Item>
-            ))
+            outcomeIds.map(id => (<Outcome key={id} id={id} />))
         }
     </ListGroup>
 );
 
-const mapStateToProps = state => ({
-    outcomes: state.outcomes,
-});
-
-export default connect(mapStateToProps)(OutcomeList);
+export default OutcomeList;
 
