@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import MarketList from './MarketList';
 import Loader from '../Loader';
 
+import './style.scss';
+
 const Event = ({
     events,
     loaded,

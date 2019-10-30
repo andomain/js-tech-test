@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ListGroup from 'react-bootstrap/ListGroup';
 
+import Odds from '../shared/Odds';
 import Loader from '../Loader';
 
 const Outcome = ({ id, outcomes }) => {
@@ -28,8 +29,9 @@ const Outcome = ({ id, outcomes }) => {
     }
 
     return (
-        <ListGroup.Item>
+        <ListGroup.Item className="Outcome">
             {outcome.name}
+            <Odds price={outcome.price} suspended={outcome.status.suspended} />
         </ListGroup.Item>
     );
 }
