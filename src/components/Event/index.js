@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import MarketList from './MarketList';
+import EventTitle from '../shared/EventTitle';
 import Loader from '../Loader';
 
 import './style.scss';
@@ -23,7 +24,9 @@ const Event = ({
 
     return (
         <article>
-            <h1>{eventData.name}</h1>
+            <h1>
+                <EventTitle event={eventData} />
+            </h1>
             <MarketList marketIds={eventData.markets} />
         </article>
     );

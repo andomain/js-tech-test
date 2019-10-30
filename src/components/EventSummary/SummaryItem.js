@@ -2,13 +2,15 @@ import React from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { Link } from 'react-router-dom';
 
+import EventTitle from '../shared/EventTitle';
+
 const SummaryItem = ({ item }) => {
-    const { competitors, scores } = item;
+    const { scores } = item;
 
     return (
         <Link key={item.eventId} to={`/event/${item.eventId}`} className="SummaryItem">
             <ListGroup.Item action>
-                <span>{`${competitors[0].name} v ${competitors[1].name}`}</span>
+                <EventTitle event={item} />
                 <span>{`${scores.home} - ${scores.away}`}</span>
             </ListGroup.Item>
         </Link>
