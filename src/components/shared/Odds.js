@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import { PriceType } from '../../dataTypes';
 
-const Odds = ({ price, suspended, decimal }) => {
+export const Odds = ({ price, suspended, decimal }) => {
     const priceText = decimal ? Number(price.decimal).toFixed(2) : `${price.num} / ${price.den}`;
 
     return (
