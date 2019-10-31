@@ -4,7 +4,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import PropTypes from 'prop-types';
 
 import Odds from '../shared/Odds';
-import Loader from '../Loader';
+import Loader from '../shared/Loader';
 
 import { OutcomeType } from '../../dataTypes';
 

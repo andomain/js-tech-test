@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 
 import OutcomeList from './OutcomeList';
-import Loader from '../Loader';
+import Loader from '../shared/Loader';
 
 import { MarketType } from '../../dataTypes';
 

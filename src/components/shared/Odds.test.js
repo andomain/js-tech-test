@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { Odds } from './Odds';
+import { OddsDisplay as Odds } from './Odds';
 import { outcomes } from '../../fixtures';
 
 const { price } = outcomes[0];

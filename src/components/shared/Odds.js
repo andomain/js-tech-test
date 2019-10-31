@@ -8,7 +8,7 @@ import { PriceType } from '../../dataTypes';
 /**
  * Output a price in fractional/decimal format
  */
-export const Odds = ({ price, suspended, decimal }) => {
+export const OddsDisplay = ({ price, suspended, decimal }) => {
     const priceText = decimal ? Number(price.decimal).toFixed(2) : `${price.num} / ${price.den}`;
 
     return (
@@ -23,10 +23,10 @@ const mapStateToProps = (state) => ({
     decimal: state.status.decimalOdds,
 });
 
-Odds.propTypes = {
+OddsDisplay.propTypes = {
     price: PriceType.isRequired,
     suspended: PropTypes.bool.isRequired,
     decimal: PropTypes.bool.isRequired,
 };
 
-export default connect(mapStateToProps)(Odds);
+export default connect(mapStateToProps)(OddsDisplay);

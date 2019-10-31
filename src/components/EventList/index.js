@@ -3,15 +3,15 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ListGroup from 'react-bootstrap/ListGroup';
 
-import Loader from '../Loader';
+import Loader from '../shared/Loader';
 import SummaryItem from './SummaryItem';
 import { EventType } from '../../dataTypes';
 
 import './style.scss';
 
-const EventList = ({ events, loaded }) => (
+export const EventListDisplay = ({ events, title, loaded }) => (
     <div className="EventList">
-        <h1>Live Football</h1>
+        <h1>{title}</h1>
         {!loaded && <Loader />}
         {loaded && (
             <ListGroup>
@@ -28,13 +28,14 @@ const mapStateToProps = (state) => ({
     events: Object.values(state.events),
 });
 
-export default connect(mapStateToProps)(EventList);
-
-EventList.propTypes = {
+EventListDisplay.propTypes = {
+    title: PropTypes.string.isRequired,
     events: PropTypes.arrayOf(EventType),
     loaded: PropTypes.bool.isRequired,
 };
 
-EventList.defaultProps = {
+EventListDisplay.defaultProps = {
     events: [],
 };
+
+export default connect(mapStateToProps)(EventListDisplay);

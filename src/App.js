@@ -12,7 +12,7 @@ export const App = () => (
             <Card.Body>
                 <Switch>
                     <Route path="/event/:id" component={Event} />
-                    <Route path="/" component={EventList} />
+                    <Route path="/" component={() => <EventList title="Live Football" />} />
                 </Switch>
             </Card.Body>
         </Card>
