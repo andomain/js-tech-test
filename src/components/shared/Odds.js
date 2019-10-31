@@ -5,6 +5,9 @@ import PropTypes from 'prop-types';
 
 import { PriceType } from '../../dataTypes';
 
+/**
+ * Output a price in fractional/decimal format
+ */
 export const Odds = ({ price, suspended, decimal }) => {
     const priceText = decimal ? Number(price.decimal).toFixed(2) : `${price.num} / ${price.den}`;
 

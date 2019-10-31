@@ -1,9 +1,7 @@
-import reducer, { initialState } from '../markets';
-import { LOAD_MARKET } from '../../actions/markets';
+import reducer, { initialState } from './markets';
+import { LOAD_MARKET } from '../actions/markets';
 
-const exampleMarket = {
-    marketId: 1,
-};
+import { market } from '../fixtures';
 
 describe('markets reducer', () => {
     it('should return the initial state', () => {
@@ -13,9 +11,9 @@ describe('markets reducer', () => {
     it('should handle LOAD_MARKET actions', () => {
         expect(reducer(initialState, {
             type: LOAD_MARKET,
-            payload: exampleMarket,
+            payload: market,
         })).toEqual({
-            1: exampleMarket,
+            93649179: market,
         });
     });
 });

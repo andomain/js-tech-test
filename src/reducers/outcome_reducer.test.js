@@ -1,9 +1,7 @@
-import reducer, { initialState } from '../outcomes';
-import { LOAD_OUTCOME } from '../../actions/outcomes';
+import reducer, { initialState } from './outcomes';
+import { LOAD_OUTCOME } from '../actions/outcomes';
 
-const exampleOutcome = {
-    outcomeId: 1,
-};
+import { outcomes } from '../fixtures';
 
 describe('outcomes reducer', () => {
     it('should return the initial state', () => {
@@ -13,9 +11,9 @@ describe('outcomes reducer', () => {
     it('should handle LOAD_MARKET actions', () => {
         expect(reducer(initialState, {
             type: LOAD_OUTCOME,
-            payload: exampleOutcome,
+            payload: outcomes[0],
         })).toEqual({
-            1: exampleOutcome,
+            367528211: outcomes[0],
         });
     });
 });
