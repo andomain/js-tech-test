@@ -8,7 +8,7 @@ import Loader from '../shared/Loader';
 
 import { OutcomeType } from '../../dataTypes';
 
-const Outcome = ({ id, outcomes }) => {
+export const OutcomeDisplay = ({ id, outcomes }) => {
     const outcome = outcomes[id];
 
     // If outcome not yet loaded
@@ -26,16 +26,18 @@ const Outcome = ({ id, outcomes }) => {
     if (!outcome.status.displayable) {
         return (
             <ListGroup.Item>
-                {outcome.name}
-                {' '}
-                (Disabled)
+                <span>
+                    {`${outcome.name} (Disabled)`}
+                </span>
             </ListGroup.Item>
         );
     }
 
     return (
         <ListGroup.Item className="Outcome">
-            {outcome.name}
+            <span>
+                {outcome.name}
+            </span>
             <Odds price={outcome.price} suspended={outcome.status.suspended} />
         </ListGroup.Item>
     );
@@ -46,9 +48,9 @@ const mapStateToProps = (state) => ({
     outcomes: state.outcomes,
 });
 
-Outcome.propTypes = {
+OutcomeDisplay.propTypes = {
     id: PropTypes.number.isRequired,
     outcomes: PropTypes.objectOf(OutcomeType).isRequired,
 };
 
-export default connect(mapStateToProps)(Outcome);
+export default connect(mapStateToProps)(OutcomeDisplay);

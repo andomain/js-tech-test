@@ -10,7 +10,7 @@ import Loader from '../shared/Loader';
 
 import { MarketType } from '../../dataTypes';
 
-const Market = ({ id, markets }) => {
+export const MarketDisplay = ({ id, markets }) => {
     const market = markets[id];
 
     // If market has not yet loaded from the socket
@@ -31,8 +31,9 @@ const Market = ({ id, markets }) => {
         return (
             <Card>
                 <Card.Header>
-                    {market.name}
-                    (Disabled)
+                    <span>
+                        {`${market.name} (Disabled)`}
+                    </span>
                 </Card.Header>
             </Card>
         );
@@ -42,7 +43,7 @@ const Market = ({ id, markets }) => {
         <Card>
             <Card.Header>
                 <Accordion.Toggle as={Button} variant="link" eventKey={market.marketId}>
-                    {market.name}
+                    <span>{market.name}</span>
                 </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse eventKey={market.marketId}>
@@ -58,9 +59,9 @@ const mapStateToProps = (state) => ({
     markets: state.markets,
 });
 
-Market.propTypes = {
+MarketDisplay.propTypes = {
     id: PropTypes.number.isRequired,
     markets: PropTypes.objectOf(MarketType).isRequired,
 };
 
-export default connect(mapStateToProps)(Market);
+export default connect(mapStateToProps)(MarketDisplay);
