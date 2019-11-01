@@ -2,7 +2,9 @@
 
 ## Technology Choices
 
-This application is built using React as this is my preferred framework for building UI components, particularly when the underlying data can update in real time. I also chose to use Redux as this provided an interface for the websocket listener to update the React application's state. I chose to use the standard browser WebSocket API rather than a library such as Socket.IO as it is widely supported and the requirements are relatively straightforward.
+This application is built using `React` as this is my preferred framework for building UI components, particularly when the underlying data can update in real time. I also chose to use `Redux` as this provided an interface for the websocket listener to update the React application's state. To get up & running as quickly as possible, the project is bootstrapped using `create-reat-app`. As a result, testing is implemented using `Jest` & `Enzyme` to make the most use of this boilerplate.
+
+I chose to use the standard browser `WebSocket` API rather than a library such as `Socket.IO` as it is widely supported and the requirements are relatively straightforward.
 
 Due to time constraints, I was unable to focus much on the design of the application. In the interest of implementing maximum functionality in a short space of time I used `react-bootstrap` as it provides a wide variety of components that I find useful for prototyping.
 
