@@ -1,0 +1,17 @@
+.Event {
+    &__Controls {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        margin-bottom: 1em;
+    }
+}
+
+.Outcome {
+    &.list-group-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}

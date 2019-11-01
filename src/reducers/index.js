@@ -1,17 +1,13 @@
 import { combineReducers } from 'redux';
 
-// Dumb placeholder reducer
-const baseReducer = (state = {}, action) => {
-    switch (action.type) {
-        case 'TEST_ACTION': {
-            return {
-                result: action.payload,
-            }
-        }
-        default: return state;
-    }
-}
+import events from './events';
+import markets from './markets';
+import outcomes from './outcomes';
+import status from './status';
 
 export default combineReducers({
-    baseReducer
+    events,
+    markets,
+    outcomes,
+    status,
 });
