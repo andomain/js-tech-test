@@ -8,7 +8,7 @@ import ToggleOdds from './components/shared/ToggleOdds';
 
 import './style.scss';
 
-export const App = () => (
+const App = () => (
     <Router>
         <Card className="App">
             <Card.Img variant="top" src="/assets/footballHeader.jpg" />
