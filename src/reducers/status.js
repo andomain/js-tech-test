@@ -1,6 +1,6 @@
 import { SET_LOADED, TOGGLE_ODDS } from '../actions/status';
 
-const initialState = {
+export const initialState = {
     loaded: false,
     decimalOdds: true,
 };
