@@ -12,7 +12,7 @@ import { EventType } from '../../dataTypes';
 
 import './style.scss';
 
-const Event = ({
+export const EventDisplay = ({
     events,
     loaded,
     match,
@@ -44,7 +44,7 @@ const mapStateToProps = (state) => ({
 });
 
 
-Event.propTypes = {
+EventDisplay.propTypes = {
     events: PropTypes.objectOf(EventType).isRequired,
     loaded: PropTypes.bool.isRequired,
     match: PropTypes.shape({
@@ -54,4 +54,4 @@ Event.propTypes = {
     }).isRequired,
 };
 
-export default connect(mapStateToProps)(Event);
+export default connect(mapStateToProps)(EventDisplay);

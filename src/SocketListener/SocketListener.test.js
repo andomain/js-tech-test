@@ -1,8 +1,8 @@
-import SocketListener from '..';
+import SocketListener from '.';
 import {
     SOCKET_URL,
     REQUEST,
-} from '../../constants';
+} from '../constants';
 
 const socketInstance = new SocketListener(SOCKET_URL, jest.fn());
 
