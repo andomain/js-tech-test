@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import MarketList from './MarketList';
 import EventTitle from '../shared/EventTitle';
 import Loader from '../shared/Loader';
-import ToggleOdds from '../shared/ToggleOdds';
 
 import { EventType } from '../../dataTypes';
 
@@ -31,7 +30,6 @@ export const EventDisplay = ({
             </h1>
             <div className="Event__Controls">
                 <Link to="/">Back</Link>
-                <ToggleOdds />
             </div>
             <MarketList marketIds={eventData.markets} />
         </article>
